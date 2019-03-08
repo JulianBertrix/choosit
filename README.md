@@ -27,4 +27,4 @@ cliquez sur l'icone du panier pour accéder au panier.
 # Bugs et manques
 
 - bug concernant la mise à jour de la quantité d'un produit ajouté 2 fois au panier,
-- je n'est pas réalisé la partie concernant l'utilisation de docker.
+- je n'ai pas réalisé la partie concernant l'utilisation de docker.
