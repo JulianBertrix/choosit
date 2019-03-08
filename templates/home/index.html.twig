@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <div class="container">            
+        <div class="col-sm">
+            <div class="row">
+                {%for product in products%} 
+                <div class="row">                                   
+                    <h3 class="products">{{product.nom}}</h3>
+                    <image src="{{product.image}}"></image> 
+                    <a type="button" class="btn-sm btn-primary" href="details/{{product.id}}">Voir la fiche</a>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+{% endblock %}

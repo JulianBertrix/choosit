@@ -1,0 +1,37 @@
+.products {
+    margin-top: 25%;
+    margin-right: 5%;
+}
+
+.name {
+    margin-top: 5%;
+    text-align: center;
+}
+
+.description {
+    margin-top: 2%;
+    text-align: center;
+}
+
+.price {
+    margin-top: 2%;
+    text-align: center;
+}
+
+.panier {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.ajouter {
+    float: right;
+}
+
+.totalPanier {
+    float: right;
+}
+
+.empty {
+    text-align: center;
+    margin-top: 15%;
+}

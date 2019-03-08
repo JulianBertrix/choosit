@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Description</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produit in produits %}
+                <tr>
+                    <th scope="row"></th>
+                    <td>{{produit.nom}}</td>
+                    <td>{{produit.description}}</td>
+                    <td>{{produit.prix}} €</td>
+                    <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#produit{{produit.id}}">Modifier</button></td>
+                    <td><button type="button" class="btn btn-danger" onclick="deleteProduct({{produit.id}})">Supprimer</button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-warning ajouter" data-toggle="modal" data-target="#ajouterProduit">Ajouter un produit</button>
+</div>
+<div class="modal fade" id="ajouterProduit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Ajouter un nouveau produit</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label>Nom du produit</label>
+                    <input type="text" class="form-control" id="nomProduit" placeholder="nom" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" id="descriptionProduit" placeholder="description" required></textarea>
+                </div>
+                <div class="form-check">
+                    <label>Prix unitaire</label>
+                    <input type="number" step="0.1" id="prixProduit" placeholder="0.0 €" required>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-success" onclick="createProduct()">Valider</button>
+        </div>
+        </div>
+    </div>
+</div>
+{% for produit in produits %}
+    <div class="modal fade" id="produit{{produit.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modifier le produit {{produit.nom}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label>Nom du produit</label>
+                        <input type="text" class="form-control" id="nom{{produit.id}}" placeholder="nom" value="{{produit.nom}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" id="description{{produit.id}}">{{produit.description}}</textarea>
+                    </div>
+                    <div class="form-check">
+                        <label>Prix unitaire</label>
+                        <input type="number" step="0.1" id="prix{{produit.id}}" value="{{produit.prix}}">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-success" onclick="updateProduct({{produit.id}})">Valider</button>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}
